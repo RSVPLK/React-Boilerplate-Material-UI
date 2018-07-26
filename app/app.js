@@ -14,7 +14,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
-import 'sanitize.css/sanitize.css';
+import { MuiThemeProvider } from 'material-ui/styles';
+import CssBaseline from 'material-ui/CssBaseline';
+import theme from 'utils/theme';
 
 // Import root app
 import App from 'containers/App';
@@ -44,13 +46,18 @@ const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {
   ReactDOM.render(
-    <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-      </LanguageProvider>
-    </Provider>,
+    <div>
+      <CssBaseline />
+      <Provider store={store}>
+        <LanguageProvider messages={messages}>
+          <ConnectedRouter history={history}>
+            <MuiThemeProvider theme={theme}>
+              <App />
+            </MuiThemeProvider>
+          </ConnectedRouter>
+        </LanguageProvider>
+      </Provider>
+    </div>,
     MOUNT_NODE,
   );
 };
