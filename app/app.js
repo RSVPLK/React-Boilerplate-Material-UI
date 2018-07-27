@@ -46,7 +46,7 @@ const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {
   ReactDOM.render(
-    <div>
+    <React.Fragment>
       <CssBaseline />
       <Provider store={store}>
         <LanguageProvider messages={messages}>
@@ -57,7 +57,7 @@ const render = messages => {
           </ConnectedRouter>
         </LanguageProvider>
       </Provider>
-    </div>,
+    </React.Fragment>,
     MOUNT_NODE,
   );
 };
