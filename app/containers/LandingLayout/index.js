@@ -14,18 +14,19 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import LandingLayout from 'containers/LandingLayout';
-import MainDashLayout from 'containers/MainDashLayout';
+import Layout from 'containers/LandingLayout/Layout';
+import HomePage from 'containers/LandingLayout/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 export default function App() {
   return (
     <React.Fragment>
-      <Switch>
-        <Route path="/dashboard/" component={MainDashLayout} />
-        <Route path="/" component={LandingLayout} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </Layout>
     </React.Fragment>
   );
 }
